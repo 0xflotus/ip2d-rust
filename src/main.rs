@@ -2,7 +2,7 @@ use clap::{App, Arg};
 
 fn main() {
     let matches = App::new("ip2d")
-        .version("0.1.0")
+        .version("0.1.1")
         .about("A converter for IPv4 Addresses")
         .arg(
             Arg::new("ip")
@@ -18,11 +18,18 @@ fn main() {
                 .value_name("number")
                 .about("Converts a number to an IPv4 Address"),
         )
+        .arg(
+            Arg::new("hex")
+                .short('x')
+                .long("hex")
+                .takes_value(false)
+                .about("Converts an IPv4 Address to a hex number"),
+        )
         .get_matches();
 
     if matches.is_present("reverse") {
         if let Some(number) = matches.value_of("reverse") {
-            let num = number.parse::<i32>().unwrap();
+            let num = number.parse::<u32>().unwrap();
             let vec: Vec<String> = vec![0x18, 0x10, 0x8, 0x0]
                 .into_iter()
                 .map(|x| (num >> x) & 0xff)
@@ -36,8 +43,12 @@ fn main() {
     if let Some(ip) = matches.value_of("ip") {
         let splitted = ip
             .split(".")
-            .map(|x| x.parse::<i32>().unwrap())
+            .map(|x| x.parse::<u32>().unwrap())
             .fold(0, |x, y| (x << 0x8) | y);
-        println!("{}", splitted);
+        if matches.is_present("hex") {
+            println!("{:#010x}", splitted);
+        } else {
+            println!("{}", splitted);
+        }
     }
 }
