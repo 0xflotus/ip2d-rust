@@ -1,0 +1,43 @@
+use clap::{App, Arg};
+
+fn main() {
+    let matches = App::new("ip2d")
+        .version("0.1.0")
+        .about("A converter for IPv4 Addresses")
+        .arg(
+            Arg::new("ip")
+                .about("Converts an IPv4 Address to a number")
+                .required(false)
+                .index(1_u64),
+        )
+        .arg(
+            Arg::new("reverse")
+                .short('r')
+                .long("reverse")
+                .takes_value(true)
+                .value_name("number")
+                .about("Converts a number to an IPv4 Address"),
+        )
+        .get_matches();
+
+    if matches.is_present("reverse") {
+        if let Some(number) = matches.value_of("reverse") {
+            let num = number.parse::<i32>().unwrap();
+            let vec: Vec<String> = vec![0x18, 0x10, 0x8, 0x0]
+                .into_iter()
+                .map(|x| (num >> x) & 0xff)
+                .map(|x| x.to_string())
+                .collect();
+            println!("{}", vec.join("."));
+        }
+        return;
+    }
+
+    if let Some(ip) = matches.value_of("ip") {
+        let splitted = ip
+            .split(".")
+            .map(|x| x.parse::<i32>().unwrap())
+            .fold(0, |x, y| (x << 0x8) | y);
+        println!("{}", splitted);
+    }
+}
