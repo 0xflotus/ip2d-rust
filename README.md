@@ -8,13 +8,14 @@ A converter for IPv4 addresses.
 A converter for IPv4 Addresses
 
 USAGE:
-    ip2d [OPTIONS] [ip]
+    ip2d [FLAGS] [OPTIONS] [ip]
 
 ARGS:
     <ip>    Converts an IPv4 Address to a number
 
 FLAGS:
     -h, --help       Prints help information
+    -x, --hex        Converts an IPv4 Address to a hex number
     -V, --version    Prints version information
 
 OPTIONS:
