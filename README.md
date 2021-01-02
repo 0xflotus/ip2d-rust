@@ -4,6 +4,25 @@ A converter for IPv4 addresses.
 
 ## Usage
 
-`ip2d 127.0.0.1`
+```console
+A converter for IPv4 Addresses
 
-`ip2d -r 230451`
+USAGE:
+    ip2d [OPTIONS] [ip]
+
+ARGS:
+    <ip>    Converts an IPv4 Address to a number
+
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+
+OPTIONS:
+    -r, --reverse <number>    Converts a number to an IPv4 Address
+```
+
+## Examples
+
+`ip2d 127.0.0.1` -> `2130706433`
+
+`ip2d -r 230451` -> `0.3.132.51`
