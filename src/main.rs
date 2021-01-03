@@ -50,5 +50,7 @@ fn main() {
         } else {
             println!("{}", splitted);
         }
+    } else {
+        println!("Please specify an IPv4 address to convert.");
     }
 }
