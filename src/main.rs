@@ -2,7 +2,7 @@ use clap::{App, Arg};
 
 fn main() {
     let matches = App::new("ip2d")
-        .version("0.1.4")
+        .version("0.2.0")
         .about("A converter for IPv4 Addresses")
         .arg(
             Arg::new("ip")
