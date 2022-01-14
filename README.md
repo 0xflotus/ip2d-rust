@@ -1,4 +1,4 @@
-# IP2D
+# ip2d
 
 A converter for IPv4 addresses.
 
