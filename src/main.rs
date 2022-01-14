@@ -6,9 +6,9 @@ fn main() {
         .about("A converter for IPv4 Addresses")
         .arg(
             Arg::new("ip")
-                .about("Converts an IPv4 Address to a number")
+                .help("Converts an IPv4 Address to a number")
                 .required(false)
-                .index(1_u64),
+                .index(1_usize),
         )
         .arg(
             Arg::new("reverse")
@@ -16,14 +16,14 @@ fn main() {
                 .long("reverse")
                 .takes_value(true)
                 .value_name("number")
-                .about("Converts a number to an IPv4 Address"),
+                .help("Converts a number to an IPv4 Address"),
         )
         .arg(
             Arg::new("hex")
                 .short('x')
                 .long("hex")
                 .takes_value(false)
-                .about("Converts an IPv4 Address to a hex number"),
+                .help("Converts an IPv4 Address to a hex number"),
         )
         .get_matches();
 
