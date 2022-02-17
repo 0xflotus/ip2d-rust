@@ -1,12 +1,13 @@
-use clap::{App, Arg};
+use clap::{Command, Arg};
 
 fn main() {
-    let matches = App::new("ip2d")
-        .version("0.2.0")
+    let matches = Command::new("ip2d")
+        .author("0xflotus")
+        .version("0.3.0")
         .about("A converter for IPv4 Addresses")
         .arg(
             Arg::new("ip")
-                .help("Converts an IPv4 Address to a number")
+                .help("Converts an IPv4 Address to an integer")
                 .required(false)
                 .index(1_usize),
         )
@@ -16,7 +17,7 @@ fn main() {
                 .long("reverse")
                 .takes_value(true)
                 .value_name("number")
-                .help("Converts a number to an IPv4 Address"),
+                .help("Converts an integer to an IPv4 Address"),
         )
         .arg(
             Arg::new("hex")
