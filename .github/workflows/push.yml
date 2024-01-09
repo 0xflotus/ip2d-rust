@@ -11,4 +11,5 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-      - run: cargo build --release && bats test/test.bats
+      - run: cargo build --release
+      - run: bats test/test.bats
