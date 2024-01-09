@@ -5,21 +5,18 @@ A converter for IPv4 addresses.
 ## Usage
 
 ```console
-ip2d 0.3.0
-0xflotus
 A converter for IPv4 Addresses
 
-USAGE:
-    ip2d [OPTIONS] [ip]
+Usage: ip2d [OPTIONS] [ip]
 
-ARGS:
-    <ip>    Converts an IPv4 Address to an integer
+Arguments:
+  [ip]  Converts an IPv4 Address to an integer
 
-OPTIONS:
-    -h, --help                Print help information
-    -r, --reverse <number>    Converts an integer to an IPv4 Address
-    -V, --version             Print version information
-    -x, --hex                 Converts an IPv4 Address to a hex number
+Options:
+  -r, --reverse <number>  Converts an integer to an IPv4 Address
+  -x, --hex               Converts an IPv4 Address to a hex number
+  -h, --help              Print help
+  -V, --version           Print version
 ```
 
 ## Examples
