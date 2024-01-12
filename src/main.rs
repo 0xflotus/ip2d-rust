@@ -3,7 +3,7 @@ use clap::{Arg, ArgAction, Command};
 fn main() {
     let matches = Command::new("ip2d")
         .author("0xflotus")
-        .version("0.4.1")
+        .version("0.4.2")
         .about("A converter for IPv4 Addresses")
         .arg(
             Arg::new("ip")
