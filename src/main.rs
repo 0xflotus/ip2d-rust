@@ -22,18 +22,33 @@ fn main() -> Result<()> {
                 .action(ArgAction::SetTrue)
                 .help("Converts an IP Address to a hex number"),
         )
+        .arg(
+            Arg::new("v6")
+                .short('6')
+                .long("v6")
+                .action(ArgAction::SetTrue)
+                .help("Force print an IPv6"),
+        )
         .get_matches();
 
     if let Some(number) = matches.get_one::<String>("reverse") {
         let num = number.parse::<u128>()?;
-        println!("{}", to_str(num));
+        if matches.get_flag("v6") {
+            println!("{}", to_str(num, true));
+        } else {
+            println!("{}", to_str(num, false));
+        }
         return Ok(());
     }
 
     if let Some(ip) = matches.get_one::<String>("ip") {
         if let Ok(splitted) = to_integer(ip) {
             if matches.get_flag("hex") {
-                println!("{:#010x}", splitted);
+                if matches.get_flag("v6") {
+                    println!("{:#034x}", splitted);   
+                } else {
+                    println!("{:#010x}", splitted);
+                }
             } else {
                 println!("{}", splitted);
             }
