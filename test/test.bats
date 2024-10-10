@@ -22,7 +22,7 @@
     [ "$OUTPUT" = "::101:101" ]
 }
 
-@test "convert the right number" {
+@test "convert the right number from v6" {
     OUTPUT=$(./target/release/ip2d ::101:101)
     [ "$OUTPUT" = "16843009" ]
 }
