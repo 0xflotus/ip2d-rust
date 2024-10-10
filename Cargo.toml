@@ -6,7 +6,7 @@ license = "MIT"
 authors = ["0xflotus <0xflotus@gmail.com>"]
 edition = "2021"
 readme = "README.md"
-categories = ["command-line-utilities", "ipv4"]
+categories = ["command-line-utilities", "ipv4", "ipv6"]
 repository  = "https://github.com/0xflotus/ip2d-rust"
 homepage = "https://github.com/0xflotus/ip2d-rust"
 
