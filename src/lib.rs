@@ -14,8 +14,11 @@ pub fn to_integer(ip: &str) -> Result<u128> {
     }
 }
 
-pub fn to_str(num: u128) -> String {
+pub fn to_str(num: u128, v6: bool) -> String {
     let addr = Ipv6Addr::from(num);
+    if v6 {
+        return addr.to_string();
+    }
     // Try and see if we can return an IPv4 address, otherwise fallback to IPv6.
     match addr.to_ipv4() {
         Some(a) => a.to_string(),
@@ -69,25 +72,25 @@ mod tests {
 
     #[test]
     fn str_works_with_ipv6() {
-        let result = to_str(50543257694033307102031451402929180945);
+        let result = to_str(50543257694033307102031451402929180945, false);
         assert_eq!(result, "2606:4700:4700::1111");
     }
 
     #[test]
     fn str_works_with_4278255360() {
-        let result = to_str(4278255360);
+        let result = to_str(4278255360, false);
         assert_eq!(result, "255.0.255.0");
     }
 
     #[test]
     fn str_works_with_1() {
-        let result = to_str(1);
+        let result = to_str(1, false);
         assert_eq!(result, "0.0.0.1");
     }
 
     #[test]
     fn str_works_with_4294967295() {
-        let result = to_str(4294967295);
+        let result = to_str(4294967295, false);
         assert_eq!(result, "255.255.255.255");
     }
 }
