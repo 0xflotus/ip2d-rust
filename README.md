@@ -2,6 +2,12 @@
 
 A converter for IP addresses.
 
+## Installation
+
+```bash
+cargo install ip2d
+```
+
 ## Usage
 
 ```console
