@@ -31,7 +31,7 @@ jobs:
           node-version: 20
       - run: npm install -g bats
       - run: bats -v
-      - run: rustup toolchain install ${{ matrix.version }}
+      - run: rustup default ${{ matrix.version }}
       - run: cargo -V
       - run: rustc -V
       - run: cargo test
