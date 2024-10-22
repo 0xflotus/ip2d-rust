@@ -2,9 +2,19 @@ name: test-ip2d
 run-name: Testing ip2d
 on: 
   push:
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - '.github/workflows/*.yml'
+      - 'Cargo.toml'
   pull_request:
     branches:
       - main
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - '.github/workflows/*.yml'
+      - 'Cargo.toml'
 jobs:
   test:
     runs-on: ubuntu-latest
