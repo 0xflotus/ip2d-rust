@@ -17,6 +17,12 @@ on:
       - 'Cargo.toml'
 jobs:
   test:
+    strategy:
+      matrix:
+        version: 
+          - stable
+          - '1.82'
+          - '1.75'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +31,9 @@ jobs:
           node-version: 20
       - run: npm install -g bats
       - run: bats -v
+      - run: rustup default ${{ matrix.version }}
       - run: cargo -V
+      - run: rustc -V
       - run: cargo test
       - run: cargo build --release
       - run: bats test/test.bats
