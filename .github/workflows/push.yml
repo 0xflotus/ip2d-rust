@@ -19,11 +19,17 @@ jobs:
   test:
     strategy:
       matrix:
-        version: 
+        toolchain:
+          - nightly
           - stable
           - '1.82'
           - '1.75'
-    runs-on: ubuntu-latest
+        os:
+          - ubuntu-latest
+          - ubuntu-24.04
+          - ubuntu-22.04
+          - ubuntu-20.04
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -31,7 +37,7 @@ jobs:
           node-version: 20
       - run: npm install -g bats
       - run: bats -v
-      - run: rustup default ${{ matrix.version }}
+      - run: rustup default ${{ matrix.toolchain }}
       - run: cargo -V
       - run: rustc -V
       - run: cargo test
