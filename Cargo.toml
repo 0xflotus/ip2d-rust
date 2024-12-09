@@ -15,7 +15,7 @@ homepage = "https://github.com/0xflotus/ip2d-rust"
 
 [dependencies]
 anyhow = "1"
-clap = "4.5.21"
+clap = "4.5.23"
 
 [[bin]]
 
