@@ -13,7 +13,20 @@ on:
       - '.github/workflows/*.yml'
       - 'Cargo.toml'
 jobs:
+  bats-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install -g bats
+      - run: bats -v
+      - run: rustup default ${{ matrix.toolchain }}
+      - run: cargo build --release
+      - run: bats test/test.bats
   test:
+    needs: bats-test
     strategy:
       matrix:
         toolchain:
@@ -29,14 +42,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm install -g bats
-      - run: bats -v
       - run: rustup default ${{ matrix.toolchain }}
       - run: cargo -V
       - run: rustc -V
       - run: cargo test
-      - run: cargo build --release
-      - run: bats test/test.bats
