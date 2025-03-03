@@ -32,7 +32,6 @@ jobs:
           - nightly
           - stable
           - '1.82'
-          - '1.75'
         os:
           - ubuntu-latest
           - ubuntu-24.04
