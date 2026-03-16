@@ -16,10 +16,11 @@ jobs:
   bats-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
+          cache: "npm"
       - run: npm install -g bats
       - run: bats -v
       - run: cargo build --release
@@ -37,7 +38,7 @@ jobs:
           - ubuntu-22.04
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: rustup default ${{ matrix.toolchain }}
       - run: cargo -V
       - run: rustc -V
