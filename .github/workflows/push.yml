@@ -31,7 +31,6 @@ jobs:
         toolchain:
           - nightly
           - stable
-          - '1.82'
         os:
           - ubuntu-latest
           - ubuntu-24.04
